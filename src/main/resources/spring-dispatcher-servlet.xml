@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 静态资源(js、image等)的访问 -->
+    <mvc:default-servlet-handler/>
+
+    <!-- 配置自动扫描的包 -->
+    <context:component-scan base-package="pers.zhuye.blogsys.controller"></context:component-scan>
+
+    <context:annotation-config />
+
+    <!-- 开启注解 -->
+    <mvc:annotation-driven/>
+
+
+
+    <!-- 静态资源映射  让拦截器放开静态资源-->
+    <mvc:resources location="/BlogSys/css/" mapping="/css/**"/>
+    <mvc:resources location="/BlogSys/js/" mapping="/js/**"/>
+
+    <!-- 注册视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 视图资源url的前缀 -->
+        <property name="prefix" value="/WEB-INF/jsp/"></property>
+        <!-- 视图资源url的后缀 -->
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+
+    <!--<bean class="org.springframework.http.converter.StringHttpMessageConverter">-->
+        <!--<property name="supportedMediaTypes">-->
+            <!--<list>-->
+                <!--<value>text/plain;charset=UTF-8</value>-->
+                <!--<value>text/html;charset=UTF-8</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+    <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">-->
+        <!--<property name="supportedMediaTypes">-->
+            <!--<list>-->
+                <!--<value>application/json; charset=UTF-8</value>-->
+                <!--<value>application/x-www-form-urlencoded; charset=UTF-8</value>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!-- 支持上传文件 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
+
+</beans>

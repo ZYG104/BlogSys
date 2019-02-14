@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="pers.zhuye.blogsys.entities.UserInfoEntity" table="user_info" schema="blogweb">
+        <id name="id" column="id"/>
+        <property name="username" column="username"/>
+        <property name="nickname" column="nickname"/>
+        <property name="password" column="password"/>
+        <property name="salt" column="salt"/>
+        <property name="userPermission" column="user_permission"/>
+        <property name="userProfilePictureUrl" column="user_profile_picture_url"/>
+        <property name="userEmail" column="user_email"/>
+        <property name="userPhone" column="user_phone"/>
+        <property name="registeredDate" column="registered_date"/>
+    </class>
+</hibernate-mapping>
